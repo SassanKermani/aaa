@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title> home </title>
+</head>
+<body>
+
+	<h1> Login </h1>
+		
+	<!-- Info panal -->
+	<h1 id="info"></h1>
+	
+	<!-- Log in -->
+	<div id="logInDiv">
+		<p> User Name </p>
+		<input type="text" name="userName" id="userName">
+		<br>
+		<p> Password </p>
+		<input type="text" name="password" id="password">
+		<br>
+		<button id="login"> login </button>
+	</div>
+	
+	<!-- This is going to be Were the magic hapens -->
+	<div id="">
+		
+	</div>
+
+</body>
+<script>
+	
+	//XML
+	let xhr = new XMLHttpRequest();
+
+	//usermane and password
+	let logInCredentials;
+
+	//Login 
+	document.getElementById("login").addEventListener("click", function(event){
+		
+		console.log('login button works kinda');
+
+		xhr.open("POST", '/gui//login', true);
+		xhr.setRequestHeader("Content-type", "application/json");
+		
+		//this is where id do the thngs after I get a respocen
+		xhr.onreadystatechange = ()=>{
+ 			if(xhr.readyState == XMLHttpRequest.DONE && xhr.status == 200){
+				console.log(xhr.responseText);
+				if(xhr.responseText == "true"){
+					document.getElementById("logInDiv").style.visibility = "hidden";
+					//add new thing hear
+				}else{
+					document.getElementById("info").innerHTML = "Wrong Usermane Password";
+				}
+			}
+		}
+
+		logInCredentials = {
+			"name" : document.getElementById("userName").value,
+			"password" : document.getElementById("password").value
+		};
+
+		xhr.send(JSON.stringify(logInCredentials));
+
+	});
+</script>
+</html>

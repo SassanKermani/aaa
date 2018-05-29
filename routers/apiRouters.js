@@ -13,7 +13,7 @@ const controller = require(`../controllers/apiControllers.js`);
 =            Routes            =
 ==============================*/
 
-router.get(`/test`, controller.test);
+router.post(`/test`, controller.test);
 
 /*=====  End of Routes  ======*/
 

@@ -10,7 +10,8 @@
 =================================*/
 
 test = (req, res)=>{
-	res.send("api test")
+	res.send("api test");
+	console.log(`test`);
 }
 
 /*=====  End of functions  ======*/

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title> Create Acount </title>
+</head>
+<body>
+
+	<h1> Create Acount </h1>
+	
+	<div id="createAccountDiv">
+		
+		<p> UserName </p>
+		<input type="text" id="UserName">
+
+		<p> Password </p>
+		<input type="text" id="Password">
+		
+		<br>
+		<button id="createButton"> Create </button>
+
+	</div>
+
+</body>
+<script>
+	
+	//This old thing agean	
+	let xhr = new XMLHttpRequest();
+
+	let newAcountInfo;
+
+	//onclick
+	document.getElementById("createButton").addEventListener('click', function(event){
+		// console.log('got one');
+
+		newAcountInfo = {
+			"name" : document.getElementById('UserName').value,
+			"password" : document.getElementById('Password').value
+		}
+
+		console.log(newAcountInfo);
+
+		xhr.open("POST", '/gui/createAccount', true);
+		xhr.setRequestHeader("Content-type", "application/json");
+
+		xhr.onreadystatechange = ()=>{
+ 			if(xhr.readyState == XMLHttpRequest.DONE && xhr.status == 200){
+ 				console.log(xhr.responseText);
+ 			}
+ 		}
+
+ 		xhr.send(JSON.stringify(newAcountInfo));
+
+	});
+
+</script>
+</html>

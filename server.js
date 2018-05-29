@@ -9,7 +9,7 @@ const bodyParser = require(`body-parser`);
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.set(`view engine`, `ejs`);
+app.set('view engine', 'ejs');
 
 /*=====  End of Bringing things in and setting them up  ======*/
 
@@ -26,4 +26,4 @@ app.get("/*", (req, res)=>{
 /*----------  listen  ----------*/
 app.listen(port, ()=>{
 	console.log(`up at ${port}`);
-})
+});
